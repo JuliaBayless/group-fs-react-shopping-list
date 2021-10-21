@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json()); // needed for axios requests
+app.use(bodyParser.urlencoded({extended:true})); // needed for postman request
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
