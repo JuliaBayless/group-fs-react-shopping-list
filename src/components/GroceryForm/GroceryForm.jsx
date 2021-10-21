@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function GroceryForm ({addGroceries}) {
     console.log('inside GroceryForm');
 
-    const [groceryItem, setGroceryItem] = useState('');
+    const [groceryName, setGroceryName] = useState('');
     const [groceryQuantity, setGroceryQuantity] = useState('');
     const [groceryUnit, setGroceryUnit] = useState('');
 
@@ -13,8 +13,8 @@ function GroceryForm ({addGroceries}) {
         console.log('inside handleSubmit');
         event.preventDefault();
 
-        groceryItem = {
-            name: groceryItem,
+        let groceryItem = {
+            name: groceryName,
             quantity: groceryQuantity,
             unit: groceryUnit,
             isPurchased: false
@@ -26,7 +26,7 @@ function GroceryForm ({addGroceries}) {
     } // end handleSubmit
 
     const clearInputFields = () => {
-        setGroceryItem('');
+        setGroceryName('');
         setGroceryQuantity('');
         setGroceryUnit('');
     } // end clearInputFields();
@@ -35,20 +35,20 @@ function GroceryForm ({addGroceries}) {
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="Item:">Item</label>
-                <input onChange={(event) => setGroceryItem(event.target.value) }
-                value={groceryItem.name} 
+                <input onChange={(event) => setGroceryName(event.target.value) }
+                value={groceryName} 
                 placeholder="Item"/>
             
             <div>
             <label htmlFor="Quantity:">Quantity</label>
                 <input onChange={ (event) => setGroceryQuantity(event.target.value) }
-                value={groceryQuantity.quantity}
+                value={groceryQuantity}
                 placeholder="Quantity"/>
             
 
             <label htmlFor="Unit:">Unit</label>
                 <input onChange={(event) => setGroceryUnit(event.target.value) }
-                value={groceryUnit.unit}
+                value={groceryUnit}
                 placeholder="Unit"/>
             </div>
             
