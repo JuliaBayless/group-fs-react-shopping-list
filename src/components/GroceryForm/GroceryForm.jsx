@@ -13,6 +13,13 @@ function GroceryForm ({addGroceries}) {
         console.log('inside handleSubmit');
         event.preventDefault();
 
+        groceryItem = {
+            name: groceryItem,
+            quantity: groceryQuantity,
+            unit: groceryUnit,
+            isPurchased: false
+        };
+
         addGroceries(groceryItem);
         clearInputFields();
 
@@ -27,22 +34,27 @@ function GroceryForm ({addGroceries}) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="Item:">
-                <input onChange={(event) => setGroceryItem({name: event.target.value})}
-                value={groceryItem.name} />
-            </label>
+            <label htmlFor="Item:">Item</label>
+                <input onChange={(event) => setGroceryItem(event.target.value) }
+                value={groceryItem.name} 
+                placeholder="Item"/>
+            
+            <div>
+            <label htmlFor="Quantity:">Quantity</label>
+                <input onChange={ (event) => setGroceryQuantity(event.target.value) }
+                value={groceryQuantity.quantity}
+                placeholder="Quantity"/>
+            
 
-            <label htmlFor="Quantity:">
-                <input onChange={(event) => setGroceryQuantity({quantity: event.target.value})}
-                value={groceryQuantity.quantity} />
-            </label>
+            <label htmlFor="Unit:">Unit</label>
+                <input onChange={(event) => setGroceryUnit(event.target.value) }
+                value={groceryUnit.unit}
+                placeholder="Unit"/>
+            </div>
+            
 
-            <label htmlFor="Unit:">
-                <input onChange={(event) => setGroceryUnit({unit: event.target.value})}
-                value={groceryUnit.unit} />
-            </label>
-
-            <input type="submit" value="Submit" />
+            
+            <button>Add Grocery Item</button>
         </form>
     )
     
