@@ -1,7 +1,7 @@
 // This component is a single grocery item that is displayed within GroceryList
 import axios from 'axios';
 
-function GroceryList({ fetchGroceries, groceryItem }) {
+function GroceryItem({ fetchGroceries, groceryItem }) {
   const buyItem = () => {
     console.log(
       `In buyItem, about to do a put with grocery item id`,
@@ -54,4 +54,4 @@ function GroceryList({ fetchGroceries, groceryItem }) {
   );
 }
 
-export default GroceryList;
+export default GroceryItem;
