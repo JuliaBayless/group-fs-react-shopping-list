@@ -8,7 +8,7 @@ function GroceryItem({ fetchGroceries, groceryItem }) {
       groceryItem.id
     );
     axios
-      .put(`/${groceryItem.id}`)
+      .put(`/groceries/${groceryItem.id}`)
       .then((response) => {
         // refresh the DOM
         fetchGroceries();
@@ -27,7 +27,7 @@ function GroceryItem({ fetchGroceries, groceryItem }) {
       groceryItem.id
     );
     axios
-      .delete(`/:id`)
+      .delete(`/groceries/${groceryItem.id}`)
       .then((response) => {
         // refresh the DOM
         fetchGroceries();
