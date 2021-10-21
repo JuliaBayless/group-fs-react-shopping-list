@@ -21,7 +21,7 @@ router.put(`/`, (req, res) => {
     })
     .catch((err) => {
       console.log(`There was an error communicating with PostgreSQL`, err);
-      res.sendStatus(500);
+      res.sendStatus(500); // let the client know the request failed
     });
 });
 
@@ -40,11 +40,11 @@ router.put(`/:id`, (req, res) => {
   pool
     .query(queryText, values)
     .then((response) => {
-      res.sendStatus(200);
+      res.sendStatus(200); // let the client know the request succeeded
     })
     .catch((err) => {
       console.log(`There was an error communicating with PostgreSQL`, err);
-      res.sendStatus(500);
+      res.sendStatus(500); // let the client know the request failed
     });
 });
 
