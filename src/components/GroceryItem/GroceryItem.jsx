@@ -40,6 +40,8 @@ function GroceryItem({ fetchGroceries, groceryItem }) {
       });
   };
 
+  const editItem = () => {};
+
   return (
     <div className="groceryItem">
       <p>{groceryItem.name}</p>
@@ -53,6 +55,7 @@ function GroceryItem({ fetchGroceries, groceryItem }) {
           <>
             <button onClick={buyItem}>Buy</button>
             <button onClick={removeItem}>Remove</button>
+            <button onClick={editItem}>Edit</button>
           </>
         )}
       </div>
