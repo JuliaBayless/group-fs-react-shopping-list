@@ -5,20 +5,21 @@ const pool = require('../modules/pool.js');
 
 // TODO - Add routes here...
 
-
 router.get('/', (req, res) => {
-    const sqlText = `
-    SELECT * FROM "groceries" ORDER BY "name" DESC;
+  const sqlText = `
+    SELECT * FROM "groceries" ORDER BY "id" ASC;
     `;
-    pool.query(sqlText)
-    .then((result) =>{
-        console.log('The GET is operational', result)
-        res.send(result.rows);
-    }).catch((error) =>{
-        console.log('error in the GET', error)
-        res.sendStatus(500)
+  pool
+    .query(sqlText)
+    .then((result) => {
+      console.log('The GET is operational', result);
+      res.send(result.rows);
     })
-})
+    .catch((error) => {
+      console.log('error in the GET', error);
+      res.sendStatus(500);
+    });
+});
 
 // PUT route to reset all the isPurchased properties to false
 router.put(`/`, (req, res) => {
@@ -40,17 +41,29 @@ router.put(`/`, (req, res) => {
     });
 });
 
-// PUT route to set isPurchased as true on a specific item with an id
+// PUT route to either set isPurchased as true on a specific item with an id
+// or, if there is a req.body.name, it will update the item
 router.put(`/:id`, (req, res) => {
   // build the sql query
-  let queryText = `
-    UPDATE "groceries"
-    SET "isPurchased" = true
-    WHERE "id" = $1;
-  `;
-
-  // sanitize the inputs
-  let values = [req.params.id];
+  let values, queryText;
+  if (req.body.name) {
+    // we want to update the whole thing
+    queryText = `
+      UPDATE "groceries"
+      SET "name" = $1, "quantity" = $2, "unit" = $3
+      WHERE "id" = $4;
+    `;
+    values = [req.body.name, req.body.quantity, req.body.unit, req.params.id];
+  } else {
+    // we only want to set isPurchased to true
+    queryText = `
+      UPDATE "groceries"
+      SET "isPurchased" = true
+      WHERE "id" = $1;
+    `;
+    // sanitize the inputs
+    values = [req.params.id];
+  }
 
   pool
     .query(queryText, values)
@@ -101,24 +114,30 @@ router.delete('/:id', (req, res) => {
 
 // router.post
 router.post('/', (req, res) => {
-    const newGrocery = req.body;
-    console.log('this is req.body', req.body);
-    
-    const sqlText = `
+  const newGrocery = req.body;
+  console.log('this is req.body', req.body);
+
+  const sqlText = `
     INSERT INTO "groceries" ("name", "quantity", "unit", "isPurchased") 
     VALUES ($1, $2, $3, $4);`;
 
-    let values = [newGrocery.name, newGrocery.quantity, newGrocery.unit, newGrocery.isPurchased]
-    pool.query(sqlText, values)
+  let values = [
+    newGrocery.name,
+    newGrocery.quantity,
+    newGrocery.unit,
+    newGrocery.isPurchased,
+  ];
+  pool
+    .query(sqlText, values)
     .then((result) => {
-        res.sendStatus(201)
-    }).catch((error) => {
-        console.log(`Error making database POST`, error);
-        res.sendStatus(500);
+      res.sendStatus(201);
     })
-})
+    .catch((error) => {
+      console.log(`Error making database POST`, error);
+      res.sendStatus(500);
+    });
+});
 
 // end router post
 
 module.exports = router;
-
