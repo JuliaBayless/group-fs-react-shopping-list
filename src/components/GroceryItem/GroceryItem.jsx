@@ -41,7 +41,7 @@ function GroceryItem({ fetchGroceries, groceryItem }) {
   };
 
   return (
-    <div>
+    <div className="groceryItem">
       <p>{groceryItem.name}</p>
       <p>
         {groceryItem.quantity} {groceryItem.unit}

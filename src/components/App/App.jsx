@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from '../Header/Header.jsx';
 import './App.css';
 import GroceryForm from '../GroceryForm/GroceryForm.jsx';
+import GroceryList from '../GroceryList/GroceryList.jsx'
 
 function App() {
   let [groceryList, setGroceryList] = useState([]);
@@ -53,9 +54,13 @@ function App() {
       <Header />
       {/* We need the following child components here: */}
       <GroceryForm addGroceries={addGroceries}/>
-      {/* List */}
+
+      <GroceryList 
+      groceryList={groceryList}
+      fetchGroceries={fetchGroceries} />
+
       <main>
-        <p>Under Construction...</p>
+       
       </main>
     </div>
   );
