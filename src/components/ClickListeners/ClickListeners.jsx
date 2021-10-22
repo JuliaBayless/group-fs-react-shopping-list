@@ -3,8 +3,8 @@ import axios from 'axios';
 function HandleButton({fetchGroceries}) {
 
     const updateGroceries = () => {
-        axios.put({
-            method: 'UPDATE',
+        axios({
+            method: 'PUT',
             url: '/groceries'
         })
         .then((response) => {
@@ -17,7 +17,7 @@ function HandleButton({fetchGroceries}) {
 
     
     const deleteGroceries = () => {
-        axios.delete({
+        axios({
             method: 'DELETE',
             url: '/groceries'
         })
