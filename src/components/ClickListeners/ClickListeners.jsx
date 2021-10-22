@@ -1,6 +1,6 @@
-import axios from axios;
+import axios from 'axios';
 
-function HandleButton() {
+function HandleButton({fetchGroceries}) {
 
     const updateGroceries = () => {
         axios.put({
@@ -42,4 +42,4 @@ function HandleButton() {
 }
 
 
-export default ClickListener;
+export default HandleButton;
