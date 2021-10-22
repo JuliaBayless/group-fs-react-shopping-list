@@ -1,13 +1,26 @@
 // This is the input form to input groceries
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-function GroceryForm({ addGroceries, isInEditMode }) {
+function GroceryForm({ addGroceries, isInEditMode, groceryItemToEdit }) {
   console.log('inside GroceryForm');
 
   const [groceryName, setGroceryName] = useState('');
   const [groceryQuantity, setGroceryQuantity] = useState('');
   const [groceryUnit, setGroceryUnit] = useState('');
+
+  // will run every time state of isInEditMode changes
+  // this will update the
+  useEffect(() => {
+    updateEditStage();
+  }, [isInEditMode]);
+
+  //
+  const updateEditStage = () => {
+    console.log('the edit mode changed');
+    // if in edit mode, set the values of the input boxes to the values of the item to be edited
+    console.log(`and the grocery item to update is`, groceryItemToEdit);
+  };
 
   const handleSubmit = (event) => {
     console.log('inside handleSubmit');

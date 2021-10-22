@@ -11,6 +11,7 @@ import ClickListener from '../ClickListeners/ClickListeners.jsx';
 function App() {
   let [groceryList, setGroceryList] = useState([]);
   let [isInEditMode, setIsInEditMode] = useState(false);
+  let [groceryItemToEdit, setGroceryItemToEdit] = useState({});
 
   //when the page opens, you will see...
   useEffect(() => {
@@ -56,12 +57,18 @@ function App() {
       {/* We need the following child components here: */}
 
       <main>
-        <GroceryForm addGroceries={addGroceries} isInEditMode={isInEditMode} />
+        <GroceryForm
+          addGroceries={addGroceries}
+          isInEditMode={isInEditMode}
+          groceryItemToEdit={groceryItemToEdit}
+        />
         <ClickListener fetchGroceries={fetchGroceries} />
         <GroceryList
           groceryList={groceryList}
           fetchGroceries={fetchGroceries}
           setIsInEditMode={setIsInEditMode}
+          groceryItemToEdit={groceryItemToEdit}
+          setGroceryItemToEdit={setGroceryItemToEdit}
         />
       </main>
     </div>

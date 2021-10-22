@@ -1,7 +1,13 @@
 // This is a child of App and builds a list of GroceryItem components
 import GroceryItem from '../GroceryItem/GroceryItem';
 
-function GroceryList({ groceryList, fetchGroceries, setIsInEditMode }) {
+function GroceryList({
+  groceryList,
+  fetchGroceries,
+  setIsInEditMode,
+  setGroceryItemToEdit,
+  groceryItemToEdit,
+}) {
   console.log('inside GroceryList');
 
   return (
@@ -13,6 +19,8 @@ function GroceryList({ groceryList, fetchGroceries, setIsInEditMode }) {
             key={groceryItem.id}
             fetchGroceries={fetchGroceries}
             setIsInEditMode={setIsInEditMode}
+            setGroceryItemToEdit={setGroceryItemToEdit}
+            groceryItemToEdit={groceryItemToEdit}
           />
         );
       })}

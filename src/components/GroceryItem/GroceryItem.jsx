@@ -1,7 +1,13 @@
 // This component is a single grocery item that is displayed within GroceryList
 import axios from 'axios';
 
-function GroceryItem({ fetchGroceries, groceryItem, setIsInEditMode }) {
+function GroceryItem({
+  fetchGroceries,
+  groceryItem,
+  setIsInEditMode,
+  setGroceryItemToEdit,
+  groceryItemToEdit,
+}) {
   const buyItem = () => {
     console.log(
       `In buyItem, about to do a put with grocery item id`,
@@ -42,6 +48,9 @@ function GroceryItem({ fetchGroceries, groceryItem, setIsInEditMode }) {
 
   const editItem = () => {
     setIsInEditMode(true);
+    console.log(groceryItemToEdit);
+    // pass the current groceryItem as the groceryItemToEdit
+    setGroceryItemToEdit({ ...groceryItem });
   };
 
   return (
