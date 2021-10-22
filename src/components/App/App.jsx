@@ -5,6 +5,7 @@ import Header from '../Header/Header.jsx';
 import './App.css';
 import GroceryForm from '../GroceryForm/GroceryForm.jsx';
 import GroceryList from '../GroceryList/GroceryList.jsx'
+import swal from '@sweetalert/with-react';
 
 import ClickListener from '../ClickListeners/ClickListeners.jsx';
 
