@@ -1,8 +1,15 @@
 // This is the input form to input groceries
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import GroceryItem from '../GroceryItem/GroceryItem';
 
-function GroceryForm({ addGroceries, isInEditMode, groceryItemToEdit }) {
+function GroceryForm({
+  addGroceries,
+  isInEditMode,
+  setIsInEditMode,
+  groceryItemToEdit,
+  editGroceryItem,
+}) {
   console.log('inside GroceryForm');
 
   const [groceryName, setGroceryName] = useState('');
@@ -37,7 +44,16 @@ function GroceryForm({ addGroceries, isInEditMode, groceryItemToEdit }) {
       isPurchased: false,
     };
 
-    addGroceries(groceryItem);
+    if (isInEditMode) {
+      // add the id to the object
+      // this is needed for the update put
+      groceryItem.id = groceryItemToEdit.id;
+      editGroceryItem(groceryItem);
+    } else {
+      addGroceries(groceryItem);
+    }
+    // we're not in edit mode anymore, even if we were
+    setIsInEditMode(false);
     clearInputFields();
   }; // end handleSubmit
 

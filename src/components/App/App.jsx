@@ -49,6 +49,12 @@ function App() {
         console.log('ERROR IN POST', error);
       });
   }; //end addGroceries
+
+  const editGroceryItem = (groceryItemToEdit) => {
+    console.log(`about to edit something on the server with a put`);
+    console.log(`that object is`, groceryItemToEdit);
+  };
+
   console.log(groceryList);
   console.log(`Is in edit mode:`, isInEditMode);
   return (
@@ -60,7 +66,9 @@ function App() {
         <GroceryForm
           addGroceries={addGroceries}
           isInEditMode={isInEditMode}
+          setIsInEditMode={setIsInEditMode}
           groceryItemToEdit={groceryItemToEdit}
+          editGroceryItem={editGroceryItem}
         />
         <ClickListener fetchGroceries={fetchGroceries} />
         <GroceryList
