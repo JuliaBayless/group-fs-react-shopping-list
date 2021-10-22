@@ -4,33 +4,33 @@ import axios from 'axios';
 import Header from '../Header/Header.jsx';
 import './App.css';
 import GroceryForm from '../GroceryForm/GroceryForm.jsx';
-import GroceryList from '../GroceryList/GroceryList.jsx'
+import GroceryList from '../GroceryList/GroceryList.jsx';
 
 import ClickListener from '../ClickListeners/ClickListeners.jsx';
 
 function App() {
   let [groceryList, setGroceryList] = useState([]);
+  let [isInEditMode, setIsInEditMode] = useState(false);
 
   //when the page opens, you will see...
   useEffect(() => {
-    fetchGroceries()
+    fetchGroceries();
   }, []);
 
   //fetch those groceries from the DB with GET
   const fetchGroceries = () => {
     axios({
       method: 'GET',
-      url: '/groceries'
+      url: '/groceries',
     })
-      .then(response => {
+      .then((response) => {
         console.log('GET', response.data);
-        setGroceryList(response.data)
+        setGroceryList(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('ERROR IN GET', error);
-      })
-  } //end fetchGroceries
-
+      });
+  }; //end fetchGroceries
 
   //Add those groceries in POST
   const addGroceries = (newItem) => {
@@ -38,32 +38,31 @@ function App() {
     axios({
       method: 'POST',
       url: '/groceries',
-      data: newItem
+      data: newItem,
     })
-      .then(response => {
-        console.log('POST SUCCESS')
+      .then((response) => {
+        console.log('POST SUCCESS');
         fetchGroceries();
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('ERROR IN POST', error);
-      })
-
-
-  }//end addGroceries
+      });
+  }; //end addGroceries
   console.log(groceryList);
+  console.log(`Is in edit mode:`, isInEditMode);
   return (
     <div className="App">
       <Header />
       {/* We need the following child components here: */}
 
-
-
       <main>
-        <GroceryForm addGroceries={addGroceries} />
+        <GroceryForm addGroceries={addGroceries} isInEditMode={isInEditMode} />
         <ClickListener fetchGroceries={fetchGroceries} />
         <GroceryList
           groceryList={groceryList}
-          fetchGroceries={fetchGroceries} />
+          fetchGroceries={fetchGroceries}
+          setIsInEditMode={setIsInEditMode}
+        />
       </main>
     </div>
   );
