@@ -20,6 +20,10 @@ function GroceryForm({ addGroceries, isInEditMode, groceryItemToEdit }) {
     console.log('the edit mode changed');
     // if in edit mode, set the values of the input boxes to the values of the item to be edited
     console.log(`and the grocery item to update is`, groceryItemToEdit);
+    // update the input values to reflect the current item
+    setGroceryName(groceryItemToEdit.name);
+    setGroceryQuantity(groceryItemToEdit.quantity);
+    setGroceryUnit(groceryItemToEdit.unit);
   };
 
   const handleSubmit = (event) => {
