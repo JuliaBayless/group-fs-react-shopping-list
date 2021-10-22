@@ -63,32 +63,34 @@ function GroceryForm({
   }; // end clearInputFields();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="Item:">Item</label>
-      <input
-        onChange={(event) => setGroceryName(event.target.value)}
-        value={groceryName}
-        placeholder="Item"
-      />
-
-      <div>
-        <label htmlFor="Quantity:">Quantity</label>
+    <div className="inputContainer">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="Item:">Item</label>
         <input
-          onChange={(event) => setGroceryQuantity(event.target.value)}
-          value={groceryQuantity}
-          placeholder="Quantity"
+          className="itemIn"
+          onChange={(event) => setGroceryName(event.target.value)}
+          value={groceryName}
         />
 
-        <label htmlFor="Unit:">Unit</label>
-        <input
-          onChange={(event) => setGroceryUnit(event.target.value)}
-          value={groceryUnit}
-          placeholder="Unit"
-        />
-      </div>
+        <div>
+          <label htmlFor="Quantity:">Quantity</label>
+          <input
+            className="quantityIn"
+            onChange={(event) => setGroceryQuantity(event.target.value)}
+            value={groceryQuantity}
+          />
 
-      <button>{isInEditMode ? 'Edit' : 'Add'} Grocery Item</button>
-    </form>
+          <label htmlFor="Unit:">Unit</label>
+          <input
+            className="unitIn"
+            onChange={(event) => setGroceryUnit(event.target.value)}
+            value={groceryUnit}
+          />
+        </div>
+
+        <button>{isInEditMode ? 'Edit' : 'Add'} Grocery Item</button>
+      </form>
+    </div>
   );
 
   GroceryForm.propTypes = {

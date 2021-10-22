@@ -6,6 +6,7 @@ main {
 .groceryList {
   display: flex;
   flex-wrap: wrap;
+  
 }
 
 .groceryItem {
@@ -15,4 +16,24 @@ main {
   padding: 5px;
   margin: 5px;
   border-radius: 10px;
+}
+
+.itemIn {
+  margin: 5px;
+  width: 58%;
+}
+
+.quantityIn {
+  margin: 5px;
+  width: 20%;
+}
+
+.unitIn {
+  margin: 5px;
+  width: 20%;
+}
+
+.inputContainer {
+  height: 40%;
+  width: 40%;
 }
