@@ -68,7 +68,7 @@ function GroceryForm({ addGroceries, isInEditMode, groceryItemToEdit }) {
         />
       </div>
 
-      <button>Add Grocery Item</button>
+      <button>{isInEditMode ? 'Edit' : 'Add'} Grocery Item</button>
     </form>
   );
 
