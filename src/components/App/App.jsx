@@ -6,6 +6,8 @@ import './App.css';
 import GroceryForm from '../GroceryForm/GroceryForm.jsx';
 import GroceryList from '../GroceryList/GroceryList.jsx'
 
+import ClickListener from '../ClickListeners/ClickListeners.jsx';
+
 function App() {
   let [groceryList, setGroceryList] = useState([]);
 
@@ -30,7 +32,7 @@ function App() {
   } //end fetchGroceries
 
 
-//Add those groceries in POST
+  //Add those groceries in POST
   const addGroceries = (newItem) => {
     console.log('Post start', newItem);
     axios({
@@ -38,13 +40,13 @@ function App() {
       url: '/groceries',
       data: newItem
     })
-    .then(response => {
-      console.log('POST SUCCESS')
-      fetchGroceries();
-    })
-    .catch(error => {
-      console.log('ERROR IN POST', error);
-    })
+      .then(response => {
+        console.log('POST SUCCESS')
+        fetchGroceries();
+      })
+      .catch(error => {
+        console.log('ERROR IN POST', error);
+      })
 
 
   }//end addGroceries
@@ -53,14 +55,15 @@ function App() {
     <div className="App">
       <Header />
       {/* We need the following child components here: */}
-      <GroceryForm addGroceries={addGroceries}/>
 
-      <GroceryList 
-      groceryList={groceryList}
-      fetchGroceries={fetchGroceries} />
+
 
       <main>
-       
+        <GroceryForm addGroceries={addGroceries} />
+        <ClickListener fetchGroceries={fetchGroceries} />
+        <GroceryList
+          groceryList={groceryList}
+          fetchGroceries={fetchGroceries} />
       </main>
     </div>
   );
