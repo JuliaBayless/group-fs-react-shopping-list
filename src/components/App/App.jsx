@@ -5,6 +5,8 @@ import Header from '../Header/Header.jsx';
 import './App.css';
 import GroceryForm from '../GroceryForm/GroceryForm.jsx';
 
+import ClickListener from '../ClickListeners/ClickListeners.jsx';
+
 function App() {
   let [groceryList, setGroceryList] = useState([]);
 
@@ -53,6 +55,7 @@ function App() {
       <Header />
       {/* We need the following child components here: */}
       <GroceryForm addGroceries={addGroceries}/>
+      <ClickListener fetchGroceries={fetchGroceries}/>
       {/* List */}
       <main>
         <p>Under Construction...</p>
