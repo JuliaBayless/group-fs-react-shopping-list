@@ -47,8 +47,14 @@ function GroceryItem({ fetchGroceries, groceryItem }) {
         {groceryItem.quantity} {groceryItem.unit}
       </p>
       <div>
-        <button onClick={buyItem}>Buy</button>
-        <button onClick={removeItem}>Remove</button>
+        {groceryItem.isPurchased ? (
+          <p>Purchased</p>
+        ) : (
+          <>
+            <button onClick={buyItem}>Buy</button>
+            <button onClick={removeItem}>Remove</button>
+          </>
+        )}
       </div>
     </div>
   );
