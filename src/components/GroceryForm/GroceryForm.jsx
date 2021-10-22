@@ -33,34 +33,26 @@ function GroceryForm ({addGroceries}) {
 
 
     return (
-        
+        <div className="inputContainer">
         <form onSubmit={handleSubmit}>
-            <label htmlFor="Item:">Item</label>
-                <input onChange={(event) => setGroceryName(event.target.value) }
-                value={groceryName} 
-                placeholder="Item"/>
+            <label  htmlFor="Item:">Item</label>
+                <input className="itemIn" onChange={(event) => setGroceryName(event.target.value) }
+                value={groceryName}/>
             
             <div>
             <label htmlFor="Quantity:">Quantity</label>
-                <input onChange={ (event) => setGroceryQuantity(event.target.value) }
-                value={groceryQuantity}
-                placeholder="Quantity"/>
+                <input className="quantityIn" onChange={ (event) => setGroceryQuantity(event.target.value) }
+                value={groceryQuantity}/>
             
 
             <label htmlFor="Unit:">Unit</label>
-                <input onChange={(event) => setGroceryUnit(event.target.value) }
-                value={groceryUnit}
-                placeholder="Unit"/>
+                <input className="unitIn" onChange={(event) => setGroceryUnit(event.target.value) }
+                value={groceryUnit}/>
             </div>
-
-            
-
-        
-            
-
-            
+       
             <button>Add Grocery Item</button>
         </form>
+        </div>
     )
     
     GroceryForm.propTypes = {

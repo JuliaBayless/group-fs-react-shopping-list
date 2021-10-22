@@ -56,8 +56,6 @@ function App() {
       <Header />
       {/* We need the following child components here: */}
 
-
-
       <main>
         <GroceryForm addGroceries={addGroceries} />
         <ClickListener fetchGroceries={fetchGroceries} />
