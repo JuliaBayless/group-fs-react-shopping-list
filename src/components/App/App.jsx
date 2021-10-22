@@ -61,6 +61,7 @@ function App() {
       .then((response) => {
         console.log('POST SUCCESS');
         fetchGroceries();
+        setIsInEditMode(false);
       })
       .catch((error) => {
         console.log('ERROR IN POST', error);

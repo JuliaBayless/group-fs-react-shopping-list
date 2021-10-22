@@ -7,7 +7,7 @@ const pool = require('../modules/pool.js');
 
 router.get('/', (req, res) => {
   const sqlText = `
-    SELECT * FROM "groceries" ORDER BY "name" DESC;
+    SELECT * FROM "groceries" ORDER BY "id" ASC;
     `;
   pool
     .query(sqlText)
