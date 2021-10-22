@@ -53,6 +53,18 @@ function App() {
   const editGroceryItem = (groceryItemToEdit) => {
     console.log(`about to edit something on the server with a put`);
     console.log(`that object is`, groceryItemToEdit);
+    axios({
+      method: `PUT`,
+      url: `/groceries/${groceryItemToEdit.id}`,
+      data: groceryItemToEdit,
+    })
+      .then((response) => {
+        console.log('POST SUCCESS');
+        fetchGroceries();
+      })
+      .catch((error) => {
+        console.log('ERROR IN POST', error);
+      });
   };
 
   console.log(groceryList);

@@ -1,7 +1,6 @@
 // This is the input form to input groceries
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import GroceryItem from '../GroceryItem/GroceryItem';
 
 function GroceryForm({
   addGroceries,
